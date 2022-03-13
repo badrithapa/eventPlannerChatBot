@@ -89,3 +89,12 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+
+# - intent: plan_event
+#   examples: |
+#     - i want to plan an event.
+#     - i was planning for a birthday party
+#     - i need a restaurant to for an occassion
+#     - can you help me plan my wedding
+#     - i need to plan [birthday](ocassion_entity) party for [17](num_people) people
+#     -
