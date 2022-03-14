@@ -1,5 +1,4 @@
 version: "3.0"
-
 nlu:
 - intent: greet
   examples: |
@@ -16,7 +15,7 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
-
+    - how do you do?
 - intent: goodbye
   examples: |
     - cu
@@ -29,7 +28,6 @@ nlu:
     - see you around
     - bye bye
     - see you later
-
 - intent: affirm
   examples: |
     - yes
@@ -38,7 +36,6 @@ nlu:
     - of course
     - that sounds good
     - correct
-
 - intent: deny
   examples: |
     - no
@@ -48,53 +45,26 @@ nlu:
     - don't like that
     - no way
     - not really
-
-- intent: mood_great
-  examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
-
-- intent: mood_unhappy
-  examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
-
 - intent: bot_challenge
   examples: |
     - are you a bot?
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
-
-# - intent: plan_event
-#   examples: |
-#     - i want to plan an event.
-#     - i was planning for a birthday party
-#     - i need a restaurant to for an occassion
-#     - can you help me plan my wedding
-#     - i need to plan [birthday](ocassion_entity) party for [17](num_people) people
-#     -
+- intent: plan_event
+  examples: |
+    - i want to plan an event.
+    - i was planning for a birthday party
+    - i need a restaurant to for an occassion
+    - can you help me plan my wedding
+    - i need to plan [birthday](ocassion_entity) party for [17](num_people) people
+    - i want to organize an event.
+    - can you help plan a [wedding](ocassion_entity) reception
+    - i want to plan a [birthday](ocassion_entity) party for [9](num_people) people tomorrow [6PM](time)
+    - i want to plan an event for [3pm](time)
+    - i want to plan and event for [9AM](time)
+    - i want to plan an event
+    - [birthday](ocassion_entity) party
+    - [19](num_people) guests.
+    - [8pm](time)
+    - [12pm](time) tomorrow

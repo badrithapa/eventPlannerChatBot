@@ -1,0 +1,55 @@
+version: '3.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet
+- plan_event
+- goodbye
+- affirm
+- deny
+- bot_challenge
+entities:
+- num_people
+- ocassion_entity
+- time
+slots:
+  time_slot:
+    type: any
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: time
+  guest_slot:
+    type: any
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: num_people
+  ocassion_slot:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: ocassion_entity
+responses:
+  utter_greet:
+  - text: Hey! How are you?
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_please_rephrase:
+  - text: I'm sorry, I didn't quite understand that. Could you rephrase?
+  utter_final:
+  - text: 'ocassion: {ocassion_slot} time: {time_slot} guest: {guest_slot}'
+actions:
+- action_ask_guest_slot
+- action_ask_ocassion_slot
+- action_ask_time_slot
+forms:
+  event_form:
+    required_slots:
+    - ocassion_slot
+    - guest_slot
+    - time_slot

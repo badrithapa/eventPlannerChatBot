@@ -16,3 +16,9 @@ rules:
   steps:
   - intent: nlu_fallback
   - action: utter_please_rephrase
+
+- rule: Activate event forms
+  steps:
+  - intent: plan_event
+  - action: event_form
+  - active_loop: event_form

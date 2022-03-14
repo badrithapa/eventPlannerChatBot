@@ -14,10 +14,9 @@ pipeline:
   - name: RegexFeaturizer
   - name: LexicalSyntacticFeaturizer
   - name: CountVectorsFeaturizer
-  - name: CountVectorsFeaturizer
     analyzer: char_wb
     min_ngram: 1
-    max_ngram: 4
+    max_ngram: 2
   - name: DIETClassifier
     epochs: 100
     constrain_similarities: true
@@ -25,6 +24,20 @@ pipeline:
   - name: ResponseSelector
     epochs: 100
     constrain_similarities: true
+  # - name: "DucklingEntityExtractor"
+  #   # url of the running duckling server
+  #   url: "http://localhost:8000"
+  #   # dimensions to extract
+  #   dimensions: ["time"]
+  #   # allows you to configure the locale, by default the language is
+  #   # used
+  #   locale: "de_DE"
+  #   # if not set the default timezone of Duckling is going to be used
+  #   # needed to calculate dates from relative expressions like "tomorrow"
+  #   timezone: "Asia/Kathmandu"
+  #   # Timeout for receiving response from http url of the running duckling server
+  #   # if not set the default timeout of duckling http url is set to 3 seconds.
+  #   timeout : 3
   - name: FallbackClassifier
     threshold: 0.7
     ambiguity_threshold: 0.1

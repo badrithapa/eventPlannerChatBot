@@ -5,13 +5,10 @@ intents:
   - goodbye
   - affirm
   - deny
-  - mood_great
-  - mood_unhappy
+  - plan_event
   - bot_challenge
 
-entities:
-  - venue_entity
-  - date
+
 
 responses:
   utter_greet:
@@ -36,14 +33,42 @@ responses:
   utter_please_rephrase:
   - text: "I'm sorry, I didn't quite understand that. Could you rephrase?"
 
+  utter_final:
+  - text: "ocassion: {ocassion_slot} time: {time_slot} guest: {guest_slot}"
+
+entities:
+  - time
+  - num_people
+  - ocassion_entity
+
 slots:
-  venue_slot:
+  time_slot:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: time
+  guest_slot:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: num_people
+  ocassion_slot:
     type: text
     mappings:
     - type: from_entity
-      entity: venue_entity
+      entity: ocassion_entity
 
-  date:
+forms:
+  event_form:
+    required_slots:
+      - ocassion_slot
+      - guest_slot
+      - time_slot
+
+actions:
+  - action_ask_time_slot
+  - action_ask_ocassion_slot
+  - action_ask_guest_slot
 
 session_config:
   session_expiration_time: 60
