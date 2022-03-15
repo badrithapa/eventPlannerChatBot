@@ -17,8 +17,14 @@ rules:
   - intent: nlu_fallback
   - action: utter_please_rephrase
 
-- rule: Activate event forms
-  steps:
-  - intent: plan_event
-  - action: event_form
-  - active_loop: event_form
+# - rule: Activate event forms
+#   conversation_start: true
+#   steps:
+#   - intent: plan_event
+#   - action: event_form
+#   - active_loop: event_form
+
+# - rule: utterin utter_final
+#   steps:
+#   - intent: plan_event
+#   - action: utter_final

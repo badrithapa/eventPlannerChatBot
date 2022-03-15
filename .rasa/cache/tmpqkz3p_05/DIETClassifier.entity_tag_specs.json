@@ -1,0 +1,36 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-num_people",
+      "2": "I-num_people",
+      "3": "L-num_people",
+      "4": "U-num_people",
+      "5": "B-ocassion_entity",
+      "6": "I-ocassion_entity",
+      "7": "L-ocassion_entity",
+      "8": "U-ocassion_entity",
+      "9": "B-time",
+      "10": "I-time",
+      "11": "L-time",
+      "12": "U-time",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-num_people": 1,
+      "I-num_people": 2,
+      "L-num_people": 3,
+      "U-num_people": 4,
+      "B-ocassion_entity": 5,
+      "I-ocassion_entity": 6,
+      "L-ocassion_entity": 7,
+      "U-ocassion_entity": 8,
+      "B-time": 9,
+      "I-time": 10,
+      "L-time": 11,
+      "U-time": 12,
+      "O": 0
+    },
+    "num_tags": 13
+  }
+]

@@ -46,3 +46,12 @@ class AskForTimeAction(Action):
         dispatcher.utter_message(text="May I ask the time you're celebrating?")
 
         return []
+
+# class CallToDB(Action):
+#     def name(self) -> Text:
+#         return "action_call_to_db"
+#     def run(self, dispatcher: CollectingDispatcher,
+#             tracker: Tracker,
+#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+#         dispatcher.utter_message(text="Calling to DB")
+#         return []
