@@ -22,7 +22,10 @@ stories:
     - requested_slot: guest_slot
   - slot_was_set:
     - requested_slot: time_slot
-  - action: utter_final
+  - action: utter_confirm
+  - intent: affirm
+  - action: action_submit
+  - action: action_reset_slots
 
 
 - story: interactive_story_1
@@ -44,4 +47,7 @@ stories:
     - requested_slot: time_slot
   - slot_was_set:
     - time_slot: '8pm'
-  - action: utter_final
+  - action: utter_confirm
+  - intent: affirm
+  - action: action_submit
+  - action: action_reset_slots

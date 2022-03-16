@@ -11,9 +11,12 @@ from typing import Any, Text, Dict, List
 #
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import SlotSet
-from rasa_sdk.events import EventType
+# from rasa_sdk.events import SlotSet
+# from rasa_sdk.events import EventType
+from rasa_sdk.events import AllSlotsReset
 
+from db_mysql import insert_data
+import mysql.connector
 class AskForOcassionAction(Action):
 
     def name(self) -> Text:
@@ -47,11 +50,24 @@ class AskForTimeAction(Action):
 
         return []
 
-# class CallToDB(Action):
-#     def name(self) -> Text:
-#         return "action_call_to_db"
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-#         dispatcher.utter_message(text="Calling to DB")
-#         return []
+class SetToDB(Action):
+    def name(self) -> Text:
+        return "action_submit"
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        ocassion = tracker.get_slot("ocassion_slot")
+        guest = tracker.get_slot("guest_slot")
+        time = tracker.get_slot("time_slot")
+        dispatcher.utter_message(text="Great! I will remember that you're celebrating {} at {} with {} guests.".format(ocassion, time, guest))
+        insert_data(ocassion, guest, time)
+        return []
+
+class ResetSlots(Action):
+    def name(self) -> Text:
+        return "action_reset_slots"
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        # dispatcher.utter_message(text="Okay, I will forget everything I remembered.")
+        return [AllSlotsReset()]

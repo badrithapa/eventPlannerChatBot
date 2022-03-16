@@ -33,8 +33,8 @@ responses:
   utter_please_rephrase:
   - text: "I'm sorry, I didn't quite understand that. Could you rephrase?"
 
-  utter_final:
-  - text: "ocassion: {ocassion_slot} time: {time_slot} guest: {guest_slot}"
+  utter_confirm:
+  - text: "Please confirm the following, say yes if these are true:\n\tocassion: {ocassion_slot}\n\ttime: {time_slot} \n\tguest: {guest_slot}"
 
 entities:
   - time
@@ -69,6 +69,8 @@ actions:
   - action_ask_time_slot
   - action_ask_ocassion_slot
   - action_ask_guest_slot
+  - action_submit
+  - action_reset_slots
 
 session_config:
   session_expiration_time: 60
