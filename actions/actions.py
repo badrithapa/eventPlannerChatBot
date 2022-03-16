@@ -15,8 +15,23 @@ from rasa_sdk.executor import CollectingDispatcher
 # from rasa_sdk.events import EventType
 from rasa_sdk.events import AllSlotsReset
 
-from db_mysql import insert_data
+# from . import db_mysql
+from .db_mysql import Insert
+
 import mysql.connector
+# def insert_data(ocassion, guest, time):
+#     mydb = mysql.connector.connect(
+#         host="localhost",
+#         user="root",
+#         passwd="12345",
+#         database="chatbotdb",
+#         port="3306"
+#     )
+#     mycursor = mydb.cursor()
+#     sql = "INSERT INTO event_details (occasion, num_of_guests, time) VALUES (%s, %s, %s)"
+#     val = (ocassion, guest, time)
+#     mycursor.execute(sql, val)
+#     mydb.commit()
 class AskForOcassionAction(Action):
 
     def name(self) -> Text:
@@ -60,7 +75,7 @@ class SetToDB(Action):
         guest = tracker.get_slot("guest_slot")
         time = tracker.get_slot("time_slot")
         dispatcher.utter_message(text="Great! I will remember that you're celebrating {} at {} with {} guests.".format(ocassion, time, guest))
-        insert_data(ocassion, guest, time)
+        Insert.insert_data(ocassion, guest, time)
         return []
 
 class ResetSlots(Action):
